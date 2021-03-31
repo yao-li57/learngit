@@ -3,27 +3,58 @@
     <head>
         <meta charset="utf-8" />
         <title>我的简历</title>
+        <link rel="stylesheet" type="text/css" href="./code/mystyle.css">
+        <style>          
+            .center{
+	            text-align:center;
+	            text-align:center;
+	        }
+	        .right {
+                position: absolute;
+                right: 0px;
+                width: 300px;
+                border: 3px solid #73AD21;
+                padding: 10px;
+            }
+	        a:link {color:#b0c4de;}      /* 未访问链接*/
+            a:visited {color:#6495ed;}  /* 已访问链接 */
+            a:hover {color:#FF00FF;}  /* 鼠标移动到链接上 */
+            a:active {color:#0000FF;}  /* 鼠标点击时 */	 
+            h1{ font-family:"webfont" !important;}
+            @font-face {
+            font-family: 'webfont';
+            font-display: swap;
+             src: url('//at.alicdn.com/t/webfont_c63n5u3h504.eot'); /* IE9*/
+            src: url('//at.alicdn.com/t/webfont_c63n5u3h504.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('//at.alicdn.com/t/webfont_c63n5u3h504.woff2') format('woff2'),
+            url('//at.alicdn.com/t/webfont_c63n5u3h504.woff') format('woff'), /* chrome、firefox */
+            url('//at.alicdn.com/t/webfont_c63n5u3h504.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+            url('//at.alicdn.com/t/webfont_c63n5u3h504.svg#杨任东竹石体-Bold') format('svg'); /* iOS 4.1- */
+            }      	        		        
+        </style>
     </head>
     <body>
         <!-- 下面是内容部分 -->
         <p>
-             <h1>IT书城</h1></p>
-        <form name="formTest" action="./code/save.php" method="post"  enctype="application/x-www-form-urlencoded" >
+             <h1 class="center"> IT书城</h1></p>
+        <form class="center" name="formTest" action="./code/save.php" method="post"  enctype="application/x-www-form-urlencoded" >
             <input type="text" name="书籍名称"  value="WEB前端"/>
             <input type="submit" value="搜索"/>    
         </form>
+    <div class="right">
         <p>我的<a href="http://blog.com/">个人主页</a></p>
-        <p>这是我的详细介绍</p>
+        <p>主页为我的详细介绍</p>
+    </div>
     <div>
-        <div id="information" style="height:200px;width:400px;float:left;">
+        <div id="information" style="height:360px;width:480px;float:left;">
         <h2>本网站创始人基本信息</h2>
         <ul>
         <li>姓名： 韩宁   </li>
-        <li> 性别：男</li>
+        <li>性别：男</li>
         <li>学校：杭州电子科技大学</li>
         </ul>
             <figure>
-                <img border="0" src="https://www.runoob.com/images/pulpit.jpg" alt="Pulpit rock" width="304" height="228"
+                <img border="0" src="https://www.runoob.com/images/pulpit.jpg" alt="Pulpit rock" width="304" height="215"
                 >
             </figure>
 
@@ -36,14 +67,14 @@
         </article>
 
         </div>
-
-        <div id="content" style="height:200px;width:400px;float:left;">
+        <!--视频块-->
+        <div id="content" style="height:200px;width:680px;float:left;">
         <h3>喜欢的视频</h3>
         <ul>
             <li>视频1
                 <video width="640" height="480" controls autoplay>
                 <source src="https://www.runoob.com/try/demo_source/movie.ogg" type="video/ogg">
-                <object data="https://www.runoob.com/try/demo_source/movie.ogg" width="640" height="480">
+                <object data="https://www.runoob.com/try/demo_source/movie.ogg" width="480" height="360">
                     <embed width="640" height="480" src="https://www.runoob.com/try/demo_source/movie.ogg">
                 </object>
             </video>
@@ -52,5 +83,5 @@
         </div>
 
     </div>
-     </body>
+    </body>
 </html>
