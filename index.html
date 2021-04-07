@@ -2,24 +2,62 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>佳遥无期</title>
+        <title>我的简历</title>
         <link rel="stylesheet" type="text/css" href="./code/mystyle.css">
-        <style>          
-            .center{
-	            text-align:center;
-	            text-align:center;
+        <style>  
+            .header {
+                 background-color: #6495ed;
+                 padding: 0.1px;
+                 
+            }     
+            .search{
+            	float: right;
+                display: block;              
+                text-align:right;
+                padding: 24px 56px;
+                text-decoration: none;	            	            
 	        }
-	        .right {
+	        .center{
+	            text-align:center;	            
+	        }	        
+	        .book {
                 position: absolute;
                 right: 0px;
                 width: 300px;
                 border: 3px solid #73AD21;
                 padding: 10px;
             }
+            /*    导航条    */
+            .topnav {
+                overflow: hidden;
+                background-color: #333;
+            }
+            /*     导航连接   */
+            .topnav a{
+                float: left;
+                display: block;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 24px 56px;
+                text-decoration: none;
+            }
+            .page{
+                margin:0; padding:0;  width:100%;  min-height:100vh;
+                display:table;
+            }
+            .column.middle {
+                width: 50%;
+            }
+            .footer {
+                background-color: #6495ed;
+                padding: 10px;
+                text-align: center;
+            }
 	        a:link {color:#b0c4de;}      /* 未访问链接*/
             a:visited {color:#6495ed;}  /* 已访问链接 */
             a:hover {color:#FF00FF;}  /* 鼠标移动到链接上 */
             a:active {color:#0000FF;}  /* 鼠标点击时 */	 
+            /*     字体改变     */
             h1{ font-family:"webfont" !important;}
             @font-face {
             font-family: 'webfont';
@@ -30,23 +68,35 @@
             url('//at.alicdn.com/t/webfont_c63n5u3h504.woff') format('woff'), /* chrome、firefox */
             url('//at.alicdn.com/t/webfont_c63n5u3h504.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
             url('//at.alicdn.com/t/webfont_c63n5u3h504.svg#杨任东竹石体-Bold') format('svg'); /* iOS 4.1- */
-            }      	        		        
+            }   
+            #page img{position: fixed;bottom:10px;right:10px;}          		        
         </style>
     </head>
     <body>
         <!-- 下面是内容部分 -->
-        <p>
-             <h1 class="center"> IT书城</h1></p>
-        <form class="center" name="formTest" action="./code/save.php" method="post"  enctype="application/x-www-form-urlencoded" >
+        <div class="header">
+            <h1 class="center"> IT书城</h1>
+
+            </div>
+
+        <div class="topnav">
+            <a href="#">链接</a>
+            <a href="#">链接</a>
+            <a href="#">链接</a>
+
+         <form class="search" name="formTest" action="./code/save.php" method="post"  enctype="application/x-www-form-urlencoded" >
             <input type="text" name="书籍名称"  value="WEB前端"/>
             <input type="submit" value="搜索"/>    
-        </form>
-    <div class="right">
+        </form> 
+
+        </div>
+
+    <div class="book">
         <p>我的<a href="http://blog.com/">个人主页</a></p>
         <p>主页为我的详细介绍</p>
     </div>
-    <div>
-        <div id="information" style="height:360px;width:480px;float:left;">
+    <div class="page">
+        <div class="column left" id="information" style="height:360px;width:480px;float:left;">
         <h2>本网站创始人基本信息</h2>
         <ul>
         <li>姓名： 韩宁   </li>
@@ -67,21 +117,22 @@
         </article>
 
         </div>
-        <!--视频块-->
-        <div id="content" style="height:200px;width:680px;float:left;">
-        <h3>喜欢的视频</h3>
-        <ul>
-            <li>视频1
-                <video width="640" height="480" controls autoplay>
-                <source src="https://www.runoob.com/try/demo_source/movie.ogg" type="video/ogg">
-                <object data="https://www.runoob.com/try/demo_source/movie.ogg" width="480" height="360">
-                    <embed width="640" height="480" src="https://www.runoob.com/try/demo_source/movie.ogg">
-                </object>
-            </video>
-			</li>
-        </ul>
+        <!--主区域-->
+        <div class="column middle">
+            <h2 class="center">主区域内容</h2>
+
+
         </div>
 
+        <div id="page">                 
+            <img src="https://www.runoob.com/wp-content/uploads/2016/04/trolltunga.jpg" width="304"
+             height="215" >         
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>底部区域</p>
     </div>
     </body>
 </html>
