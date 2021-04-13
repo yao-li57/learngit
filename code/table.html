@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>IT书城</title>
+	<link rel="stylesheet" type="text/css" href="./table.css">
+	<style>  
+            @font-face {
+                font-family: 'iconfont';  /* project id 2474316 */
+                src: url('//at.alicdn.com/t/font_2474316_pok6vlwepgp.eot');
+                src: url('//at.alicdn.com/t/font_2474316_pok6vlwepgp.eot?#iefix') format('embedded-opentype'),
+                url('//at.alicdn.com/t/font_2474316_pok6vlwepgp.woff2') format('woff2'),
+                url('//at.alicdn.com/t/font_2474316_pok6vlwepgp.woff') format('woff'),
+                url('//at.alicdn.com/t/font_2474316_pok6vlwepgp.ttf') format('truetype'),
+                url('//at.alicdn.com/t/font_2474316_pok6vlwepgp.svg#iconfont') format('svg');
+              }
+            .iconfont{
+                font-family:"iconfont" !important;
+                font-size:32px;font-style:normal;
+                -webkit-font-smoothing: antialiased;
+                -webkit-text-stroke-width: 0.2px;
+                -moz-osx-font-smoothing: grayscale;}
+            .header {
+                 background-color: #6495ed;
+                 padding: 0.1px;
+                 
+            }     
+            .search{
+            	float: right;
+                display: block;              
+                text-align:right;
+                padding: 24px 56px;
+                text-decoration: none;	            	            
+	        }
+	        .center{
+	            text-align:center;	            
+	        }	        
+	        
+            /*    导航条    */
+            .topnav {
+                overflow: hidden;
+                background-color: #333;
+            }
+            /*     导航连接   */
+            .topnav a{
+                float: left;
+                display: block;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 24px 56px;
+                text-decoration: none;
+            }
+            .topnav a:hover:not(.active) {
+                background-color: #ddd;
+                color: black;
+            }
+            
+            .page:after {
+                content: "";
+                display: table;
+                clear: both;
+            }  
+            .leftcolumn {   
+                float: left;
+                width: 8%;               
+            }        
+            .rightcolumn {
+                float: left;
+                width: 90%;
+                padding-left: 20px;
+            }
+            .footer {
+                background-color: #6495ed;
+                padding: 10px;
+                text-align: center;
+            }
+            .active {
+                background-color: #4CAF50;
+
+            }
+            .card {
+                background-color: #f1f1f1;
+                padding: 50px;
+                margin-top: 20px;
+            }
+            .fakeimg {
+                background-color: #aaa;
+                width: 100%;
+                padding: 20px;
+            }
+            body {
+               margin: 0;
+            }
+
+            ul {
+               list-style-type: none;
+               margin: 0;
+               padding: 0;
+               width: 100%;              
+               height: 1000px;
+               background-color: #f1f1f1;
+            }
+
+            li a {
+               display: block;
+               color: #000;
+               padding: 8px 16px;
+               text-decoration: none;
+            }
+            li a.active {
+               background-color: #4CAF50;
+               color: white;
+            }
+
+            li a:hover:not(.active) {
+               background-color: #555;
+               color: white;
+            }
+            div.img {
+               margin: 5px;
+               border: 1px solid #ccc;
+               float: left;
+               width: 240px;
+            }
+
+            div.img:hover {
+               border: 1px solid #777;
+            }
+
+            div.img img {
+               width: 100%;
+               height: auto;
+            }
+
+            div.desc {
+               padding: 15px;
+               text-align: center;
+            }
+
+	        a:link {color:#b0c4de;}      /* 未访问链接*/
+            a:visited {color:#FF9933;}  /* 已访问链接 */
+            a:hover {color:#FF00FF;}  /* 鼠标移动到链接上 */
+            a:active {color:#0000FF;}  /* 鼠标点击时 */	 
+            /*     字体改变     */
+            h1{ font-family:"webfont" !important;}
+            @font-face {
+            font-family: 'webfont';
+            font-display: swap;
+             src: url('//at.alicdn.com/t/webfont_c63n5u3h504.eot'); /* IE9*/
+            src: url('//at.alicdn.com/t/webfont_c63n5u3h504.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('//at.alicdn.com/t/webfont_c63n5u3h504.woff2') format('woff2'),
+            url('//at.alicdn.com/t/webfont_c63n5u3h504.woff') format('woff'), /* chrome、firefox */
+            url('//at.alicdn.com/t/webfont_c63n5u3h504.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+            url('//at.alicdn.com/t/webfont_c63n5u3h504.svg#杨任东竹石体-Bold') format('svg'); /* iOS 4.1- */
+            }                       		        
+        </style>
+</head>
+<body>
+        <div class="header">
+            <h1 class="center"><i class="iconfont">&#xe664;</i> IT书城</h1>
+            </div>
+
+        <div class="topnav">
+            <a   href="../index.html">首页</a>
+            <a class="active" href="#">书库</a>
+            <a href="#">社区</a>
+            <a href="./biaodan.html" style="float:right" >登录</a>
+
+         <form class="search" name="formTest" action="./code/save.php" method="post"  enctype="application/x-www-form-urlencoded" >
+            <input type="text" name="书籍名称"  value="WEB前端"/>
+            <input type="submit" value="搜索"/>    
+        </form> 
+
+        </div>
+
+        <div class="page">
+        <div class="leftcolumn"  >
+        <ul>       
+            <li><a class="active" href="#home">热门</a></li>
+            <li><a href="#news">操作系统</a></li>
+            <li><a href="#contact">数据库</a></li>
+            <li><a href="#about">编程语言</a></li>
+        </ul>
+        </div>
+
+        <div class="rightcolumn">
+
+        <div style="margin-left:0%;padding:1px 6px;height:1000px;">
+            <div class="responsive">
+                <div class="img">
+                    <a target="_blank" href="../photos/图片1.jpg">
+                    <img src="../photos/图片1.jpg" alt="图片文本描述" width="500" height="310">
+                    </a>
+                <div class="desc">
+                    <a href="./details.html"><b>深入理解JAVA虚拟机</b></a> </div>
+                    
+                    <b style="color:red;">79.00元</b>
+                </div>
+            </div>
+          
+        </div>
+
+        </div>
+
+        </div>
+
+
+        <div class="footer">
+            <p>底部区域</p>
+        </div>
+
+</body>
+
+</html>

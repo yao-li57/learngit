@@ -2,9 +2,24 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>我的简历</title>
+        <title>IT书城</title>
         <link rel="stylesheet" type="text/css" href="./code/mystyle.css">
         <style>  
+            @font-face {
+                font-family: 'iconfont';  /* project id 2474316 */
+                src: url('//at.alicdn.com/t/font_2474316_pok6vlwepgp.eot');
+                src: url('//at.alicdn.com/t/font_2474316_pok6vlwepgp.eot?#iefix') format('embedded-opentype'),
+                url('//at.alicdn.com/t/font_2474316_pok6vlwepgp.woff2') format('woff2'),
+                url('//at.alicdn.com/t/font_2474316_pok6vlwepgp.woff') format('woff'),
+                url('//at.alicdn.com/t/font_2474316_pok6vlwepgp.ttf') format('truetype'),
+                url('//at.alicdn.com/t/font_2474316_pok6vlwepgp.svg#iconfont') format('svg');
+              }
+            .iconfont{
+                font-family:"iconfont" !important;
+                font-size:32px;font-style:normal;
+                -webkit-font-smoothing: antialiased;
+                -webkit-text-stroke-width: 0.2px;
+                -moz-osx-font-smoothing: grayscale;}
             .header {
                  background-color: #6495ed;
                  padding: 0.1px;
@@ -20,13 +35,7 @@
 	        .center{
 	            text-align:center;	            
 	        }	        
-	        .book {
-                position: absolute;
-                right: 0px;
-                width: 300px;
-                border: 3px solid #73AD21;
-                padding: 10px;
-            }
+	        
             /*    导航条    */
             .topnav {
                 overflow: hidden;
@@ -41,20 +50,42 @@
                 padding: 24px 56px;
                 text-decoration: none;
             }
-            .page{
-                margin:0; padding:0;  width:100%;  min-height:100vh;
-                display:table;
+            .topnav a:hover:not(.active) {
+                background-color: #ddd;
+                color: black;
             }
-            .column.middle {
-                width: 50%;
+            
+            .page:after {
+                content: "";
+                display: table;
+                clear: both;
+            }  
+            .leftcolumn {   
+                float: left;
+                width: 77%;
+            }        
+            .rightcolumn {
+                float: left;
+                width: 20%;
+                padding-left: 20px;
             }
             .footer {
                 background-color: #6495ed;
                 padding: 10px;
                 text-align: center;
             }
+            .active {
+                background-color: #4CAF50;
+
+            }
+            .card {
+                background-color: #f1f1f1;
+                padding: 50px;
+                margin-top: 20px;
+            }           
+
 	        a:link {color:#b0c4de;}      /* 未访问链接*/
-            a:visited {color:#6495ed;}  /* 已访问链接 */
+            a:visited {color:#FF9933;}  /* 已访问链接 */
             a:hover {color:#FF00FF;}  /* 鼠标移动到链接上 */
             a:active {color:#0000FF;}  /* 鼠标点击时 */	 
             /*     字体改变     */
@@ -75,14 +106,15 @@
     <body>
         <!-- 下面是内容部分 -->
         <div class="header">
-            <h1 class="center"> IT书城</h1>
+            <h1 class="center"><i class="iconfont">&#xe664;</i> IT书城</h1>
 
             </div>
 
         <div class="topnav">
-            <a href="#">链接</a>
-            <a href="#">链接</a>
-            <a href="#">链接</a>
+            <a  class="active" href="#">首页</a>
+            <a href="./code/table.html">书库</a>
+            <a href="#">社区</a>
+            <a href="./code/biaodan.html" style="float:right" >登录</a>
 
          <form class="search" name="formTest" action="./code/save.php" method="post"  enctype="application/x-www-form-urlencoded" >
             <input type="text" name="书籍名称"  value="WEB前端"/>
@@ -91,12 +123,12 @@
 
         </div>
 
-    <div class="book">
-        <p>我的<a href="http://blog.com/">个人主页</a></p>
-        <p>主页为我的详细介绍</p>
-    </div>
+
     <div class="page">
-        <div class="column left" id="information" style="height:360px;width:480px;float:left;">
+        <div class="leftcolumn" id="information" >
+
+
+        <div class="card">
         <h2>本网站创始人基本信息</h2>
         <ul>
         <li>姓名： 韩宁   </li>
@@ -115,20 +147,85 @@
             </header>
             <p> 我叫韩宁，学号20051911，目前在学习Web前端开发技术。</p>
         </article>
+        </div>
+
+
+        <div class="card">
+            <h2>大神竟对这本书赞不绝口</h2>
+            <h5>2021 年 4 月 1日</h5>
+            <div  >
+                <img src="./photos/cDesignLanguage.jpg" alt="图片文本描述" width="651" height="290">
+                </div>           
+            <p>从很早开始，最吸引Torvalds的编程书籍是Brian W. Kernighan和Dennis M. Ritchie的《C程序设计语言》，本书在编程圈子里也被称为K＆R。因为它很简短，内容清晰简洁，但你需要有编程背景才能真正读懂它。而且并不是只有Torvalds推荐K＆R，其他人也都把这本书作为最有影响力的参考书籍之一，诸如甲骨文负责Linux和虚拟化开发的高级副总裁Wim Coekaerts；著名Linux内核开发者Alan Cox；谷歌云CTO Brian Stevens；以及Canonical公司技术运营副总裁Pete Graner 。</p>
+        </div>
+        <div class="card">
+            <h2>一本能让你月薪过万的书籍</h2>
+            <h5>2021 年 4 月 2日</h5>
+            <div  >
+                <img src="./photos/TCPdetails.jpg" alt="图片文本描述" width="651" height="290">
+                </div>           
+            <p>特别是W·Richard Stevens 的<b>《TCP/IP详解 卷1：协议》</b>这是是一本完整而详细的TCP/IP协议指南，到了如今依然十分受欢迎，即使它已经出版近30年了。由于Linux开发在很大程度上与网络基础设施相关，因此Graner还推荐了<b>《sendmail》，《学习bash》，《DNS与BIND》和《Managing IMAP》</b>等 O'Reilly书籍。<b>设计永不过时。</b>谷歌云CTO Brian Stevens认为：技术是比较固定的，但设计却不一样，他认为所有的开发人员都应该在学习语法之前就开始学习设计。</p>
+        </div>
 
         </div>
-        <!--主区域-->
-        <div class="column middle">
-            <h2 class="center">主区域内容</h2>
 
+        <div class="rightcolumn">          
+            <div class="card">
+                <h2>关于我</h2>                
+                  <p><b>我的email:</b>2512183698@qq.com</p>
+                 <p>可咨询我的详细信息</p>
+            </div>
+            <div class="card">
+                 <h2>热门书籍</h2>                
+                <div class="responsive">
+                <div class="img">
+                    <a target="_blank" href="./photos/图片1.jpg">
+                    <img src="./photos/图片1.jpg" alt="图片文本描述" width="215" height="304">
+                    </a>
+                <div class="desc">
+                    <a href="./code/details.html">深入理解JAVA虚拟机</a> </div>
+                </div>
+                </div>
 
+                <div class="responsive">
+                <div class="img">
+                    <a target="_blank" href="./photos/图片1.png">
+                    <img src="./photos/图片1.png" alt="图片文本描述" width="215" height="304">
+                    </a>
+                <div class="desc">
+                    <a href="#">链接</a> </div>
+                </div>
+                </div>
+
+                <div class="responsive">
+                <div class="img">
+                    <a target="_blank" href="./photos/图片2.png">
+                    <img src="./photos/图片2.png" alt="图片文本描述" width="215" height="304">
+                    </a>
+                <div class="desc">
+                    <a href="#">链接</a> </div>
+                </div>
+                </div>
+
+                <div class="responsive">
+                <div class="img">
+                    <a target="_blank" href="./photos/图片3.jpg">
+                    <img src="./photos/图片3.jpg" alt="图片文本描述" width="215" height="304">
+                    </a>
+                <div class="desc">
+                    <a href="#">链接</a> </div>
+                </div>
+                </div>
+                <a href="./code/table.html"> <h2>-->更多</h2> </a>
+
+                 
+            </div>
         </div>
 
         <div id="page">                 
-            <img src="https://www.runoob.com/wp-content/uploads/2016/04/trolltunga.jpg" width="304"
-             height="215" >         
+            <img src="https://www.runoob.com/wp-content/uploads/2016/04/trolltunga.jpg" width="152"
+             height="107" >         
         </div>
-
     </div>
 
     <div class="footer">
