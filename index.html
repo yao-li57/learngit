@@ -4,6 +4,9 @@
         <meta charset="utf-8" />
         <title>IT书城</title>
         <link rel="stylesheet" type="text/css" href="./code/mystyle.css">
+        <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdn.bootcss.com/font-awesome/5.1.0/css/all.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/bootsnav.css">
         <style>  
             @font-face {
                 font-family: 'iconfont';  /* project id 2474316 */
@@ -36,24 +39,7 @@
 	            text-align:center;	            
 	        }	        
 	        
-            /*    导航条    */
-            .topnav {
-                overflow: hidden;
-                background-color: #333;
-            }
-            /*     导航连接   */
-            .topnav a{
-                float: left;
-                display: block;
-                color: #f2f2f2;
-                text-align: center;
-                padding: 24px 56px;
-                text-decoration: none;
-            }
-            .topnav a:hover:not(.active) {
-                background-color: #ddd;
-                color: black;
-            }
+            
             
             .page:after {
                 content: "";
@@ -100,15 +86,89 @@
             url('//at.alicdn.com/t/webfont_c63n5u3h504.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
             url('//at.alicdn.com/t/webfont_c63n5u3h504.svg#杨任东竹石体-Bold') format('svg'); /* iOS 4.1- */
             }   
-            #page img{position: fixed;bottom:10px;right:10px;}          		        
+            #page img{position: fixed;bottom:10px;right:10px;}   
+            /* 响应式布局 - 屏幕尺寸小于 800px 时，两列布局改为上下布局 */
+            @media screen and (max-width: 800px) {
+                   .leftcolumn, .rightcolumn {   
+                   width: 100%;
+                   padding: 0;
+                }
+            }
+ 
+             /* 响应式布局 -屏幕尺寸小于 400px 时，导航等布局改为上下布局 */
+           @media screen and (max-width: 400px) {
+                   .topnav a {
+                   float: none;
+                   width: 100%;
+                }
+            }       		        
         </style>
+
+
+        <!-- 跑马灯特效-->
+     <style type="text/css">
+         .horsingride{
+         	text-align: center;
+             margin:0 auto;
+             padding:0;
+
+         }
+         .horsingride img{
+         	 margin:0;
+             padding:0;
+             float:left;
+             height:100px;
+             width:300px;
+         }
+         #div1{
+             width:1000px;
+             height:100px;
+             overflow: hidden;
+             border:solid blue 2px;
+         }
+         #div2,#div3{
+             float:left;
+         }
+         #div4{
+             width:500%;/*这个属性很重要 让容器有足够的宽度实现滚动*/
+             float:left;
+         }
+     </style>
+     <script type="text/javascript">
+          window.onload=function(){
+          var v1=document.getElementById('div1');
+          var v2=document.getElementById('div2');
+          var v3=document.getElementById('div3');
+
+          v3.innerHTML= v2.innerHTML;//将v2容器里面的图片插入到v3容器里面  使其空白区域被遮住。
+          function fun(){
+            if(v1.scrollLeft<=0){
+                v1.scrollLeft=600;
+            }else{
+                v1.scrollLeft--;
+            }
+        }
+
+        var fun1=setInterval(fun,10);
+
+        v1.onmouseover = function() {//鼠标经过时  清除定时器  停止图片的滚动
+                clearInterval(fun1)
+            };
+        v1.onmouseout = function() {//鼠标离开后  继续滚动图片
+                fun1 = setInterval(fun, 10)
+            };
+     }
+
+    </script>
+
+
     </head>
     <body>
         <!-- 下面是内容部分 -->
         <div class="header">
             <h1 class="center"><i class="iconfont">&#xe664;</i> IT书城</h1>
 
-            </div>
+            </div>         
 
         <div class="topnav">
             <a  class="active" href="#">首页</a>
@@ -123,7 +183,20 @@
 
         </div>
 
+    <!--  跑马灯特效-->
+    <div id="div1" class="horsingride">
+         <div id="div4">
+              <div id="div2">
+                  <img src="./photos/discount1.jpg" alt="图片1"/>
+                  <img src="./photos/discount2.jpg" alt="图片2"/>
+                  <img src="./photos/discount3.jpg" alt="图片3"/>
+                  <img src="./photos/discount4.jpg" alt="图片4"/>
+             </div>
+             <div id="div3"></div><!--这个容器是用来防止图片滚动时会出现空白的区域-->
+         </div>
+    </div>
 
+    <!--page 页面-->
     <div class="page">
         <div class="leftcolumn" id="information" >
 
@@ -231,5 +304,8 @@
     <div class="footer">
         <p>底部区域</p>
     </div>
+    <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+	<script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="js/bootsnav.js"/></script>
     </body>
 </html>

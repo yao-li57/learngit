@@ -3,8 +3,44 @@
 <head>
     <meta charset="utf-8"> 
     <title>IT书城</title> 
+   <script >
+   
+    function check()
+    {
+    	
+   
+     var b=/^(?![^a-zA-Z]+$)(?!\D+$)(?![a-zA-Z0-9]+$).{8,}$/;
+     if(b.test(document.a.password.value)){
+         return true;
+     }
+     else{
+     	alert("格式错误，必须同时含有字母，数字，特殊字符，且不小于8位。")
+     	return false;
+        }
+    }        
+    window.onload = function(){
+    var obj_select = document.getElementById("test_select");
+    var obj_div = document.getElementById("test");
+    obj_select.onchange = function(){
+        obj_div.style.display = this.value==1? "block" : "none";
+         }
+    }
+  </script>
+
+  <script>
+     function checkInput(txtInput)
+    {
+    var txtStr=txtInput.value;
+    var reg =  /shit|[^a-z]/ig;
+    if(reg.test(txtStr))
+    txtInput.value=txtStr.substring(0,txtStr.length-1);
+    }
+  </script>
+
 </head>
+
 <style>
+
 input[type=text], select {
   width: 100%;
   padding: 12px 20px;
@@ -38,29 +74,31 @@ div {
 .center{
 	text-align: center;
 }
-</style>
+ </style>
 <body>
     <a href="../index.html" style="text-align: left;"> < Home </a>
     <h3 class="center">    登录</h3>
     
 <div>
-  <form action="./save.php">
+  <form action="./save.php" name="a" onsubmit="return check()">
     <label for="fname"> Name</label>
-    <input type="text" id="fname" name="name" placeholder="Your name..">
+    <input onkeyUp="return checkInput(this)" type="text" id="fname" name="name" required="required" placeholder="Your name..">
 
     <label for="lname"> Password</label>
-    <input type="text" id="lname" name="password" placeholder="Your password..">
+    <input  type="text" id="password" name="password" required="required" placeholder="Your password..">
 
     <label for="country">Country</label>
-    <select id="country" name="country">
+    <select id="test_select" name="country">
       <option value="china">China</option>
       <option value="canada">Canada</option>
       <option value="usa">USA</option>
+      <option value="1">其它</option>
     </select>
-  
+    <input id="test" style="display: none" required="required" placeholder="Your country..">
     <input type="submit" value="Submit">
   </form>
 </div>
 
 </body>
+
 </html>
