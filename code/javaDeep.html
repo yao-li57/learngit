@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>IT书城</title>
+    <link rel="stylesheet" type="text/css" href="../css/details.css">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/ejs.min.js"></script>  
+    
+</head>
+
+  <body>
+    <a onclick="go_back()"> <h3> < 返回</h3> </a>
+    <script>
+      function go_back(){
+          history.go(-1);
+      }
+    </script>
+    <div class="page" id="page">
+      <img src="../photos/图片1.jpg" width="300" height="400" > 
+      <div id="main">
+      </div>
+       
+      <script>
+            load_json();
+            function generate_post(post){
+              $.get("../tpl/post.tpl", function(result){
+              var html = ejs.compile(result)(post);
+              $("#main").html(html);
+              });
+            }
+            function load_json(){
+              $.get("../json/data.json", function(posts){                          
+                console.log(posts);
+                generate_post(posts);
+              });
+            }
+
+      </script>
+      <div id="content"></div>
+      <script>
+                load_json1();
+                function generate_post1(post){
+                  $.get("../tpl/content.tpl", function(result){
+                  var html = ejs.compile(result)(post);
+                  $("#content").html(html);
+                  });
+                }
+                function load_json1(){
+                  $.get("../json/detail.json", function(posts){                          
+                    console.log(posts);
+                    generate_post1(posts);
+                  });
+                }
+
+      </script>
+      <img src="../photos/comment.png">
+      <img src="https://images-cn.ssl-images-amazon.cn/images/S/aplus-media/vc/39cdfd54-0853-4814-9eeb-97907b412d67.__CR0,0,970,600_PT0_SX970_V1___.jpg" 
+      style="margin: 0 auto;width:800px;" >
+      <img src="https://images-cn.ssl-images-amazon.cn/images/S/aplus-media/vc/2cb1c10b-cdbb-47c7-b0f0-1c55eb7c02e7.__CR0,0,970,600_PT0_SX970_V1___.jpg"
+      style="margin: 0 auto;width:800px;">
+      <img src="https://images-cn.ssl-images-amazon.cn/images/S/aplus-media/vc/82455184-92a6-4e98-a166-3e64bd612124.__CR0,0,970,600_PT0_SX970_V1___.jpg" 
+      style="margin: 0 auto;width:800px;">
+
+      </div>  
+      <h2>相关评论：</h2>
+      <table>
+      <tr>
+          <td>书很好，准备面试用的，在这家店买了很多书了。<b style="color:#C0C0C0">(03.14)</b></td>
+          <td>把***5（匿名)</td>
+      </tr>
+      <tr>
+          <td>包装很好，书没有磕到。纸质也很好，是正版。<b style="color:#C0C0C0">(03.07)</b></td>
+          <td>煎***套（匿名)</td>
+      </tr>
+      <tr>
+          <td>不好意思收货晚了，是正品的新书，比官网买便宜。<b style="color:#C0C0C0">(02.25)</b></td>
+          <td>寻***恋（匿名）</td>
+      </tr>
+      </table>
+
+      
+      <div class="footer" id="footer">
+            
+      </div>
+      <script>
+      $.get("../tpl/footer.tpl", function(result){      
+         $("#footer").html(result);}); 
+      </script>
+
+    </div>
+    
+  </body>
+
+
+  
+</html>

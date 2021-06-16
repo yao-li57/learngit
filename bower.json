@@ -1,0 +1,20 @@
+{
+  "name": "weblearn",
+  "description": "learn web knowledge",
+  "main": "",
+  "authors": [
+    "salute <2512183698@qq.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://hdu_web.gitee.io/weblearn",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.6.0"
+  }
+}

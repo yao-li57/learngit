@@ -1,0 +1,5 @@
+$nav-color: #F90; $width: 100px;
+nav {  
+  width: $width;
+  a { color: $nav-color; }
+}

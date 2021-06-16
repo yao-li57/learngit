@@ -3,10 +3,12 @@
     <head>
         <meta charset="utf-8" />
         <title>IT书城</title>
-        <link rel="stylesheet" type="text/css" href="./code/mystyle.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css" charset="utf-8">
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
         <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://cdn.bootcss.com/font-awesome/5.1.0/css/all.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/bootsnav.css">
+  	    <link href="https://cdn.bootcss.com/font-awesome/5.1.0/css/all.css" rel="stylesheet">
+  	    
+        <script type="text/javascript" src="js/ejs.min.js"></script> 
         <style>  
             @font-face {
                 font-family: 'iconfont';  /* project id 2474316 */
@@ -23,54 +25,9 @@
                 -webkit-font-smoothing: antialiased;
                 -webkit-text-stroke-width: 0.2px;
                 -moz-osx-font-smoothing: grayscale;}
-            .header {
-                 background-color: #6495ed;
-                 padding: 0.1px;
-                 
-            }     
-            .search{
-            	float: right;
-                display: block;              
-                text-align:right;
-                padding: 24px 56px;
-                text-decoration: none;	            	            
-	        }
-	        .center{
-	            text-align:center;	            
-	        }	        
-	        
-            
-            
-            .page:after {
-                content: "";
-                display: table;
-                clear: both;
-            }  
-            .leftcolumn {   
-                float: left;
-                width: 77%;
-            }        
-            .rightcolumn {
-                float: left;
-                width: 20%;
-                padding-left: 20px;
-            }
-            .footer {
-                background-color: #6495ed;
-                padding: 10px;
-                text-align: center;
-            }
-            .active {
-                background-color: #4CAF50;
+                      
 
-            }
-            .card {
-                background-color: #f1f1f1;
-                padding: 50px;
-                margin-top: 20px;
-            }           
-
-	        a:link {color:#b0c4de;}      /* 未访问链接*/
+	          a:link {color:#b0c4de;}      /* 未访问链接*/
             a:visited {color:#FF9933;}  /* 已访问链接 */
             a:hover {color:#FF00FF;}  /* 鼠标移动到链接上 */
             a:active {color:#0000FF;}  /* 鼠标点击时 */	 
@@ -106,64 +63,94 @@
 
 
         <!-- 跑马灯特效-->
-     <style type="text/css">
-         .horsingride{
-         	text-align: center;
-             margin:0 auto;
-             padding:0;
+        <style type="text/css">
+           .horsingride{
+           	text-align: center;
+               margin:0 auto;
+               padding:0;
 
-         }
-         .horsingride img{
-         	 margin:0;
-             padding:0;
-             float:left;
-             height:100px;
-             width:300px;
-         }
-         #div1{
-             width:1000px;
-             height:100px;
-             overflow: hidden;
-             border:solid blue 2px;
-         }
-         #div2,#div3{
-             float:left;
-         }
-         #div4{
-             width:500%;/*这个属性很重要 让容器有足够的宽度实现滚动*/
-             float:left;
-         }
-     </style>
-     <script type="text/javascript">
-          window.onload=function(){
-          var v1=document.getElementById('div1');
-          var v2=document.getElementById('div2');
-          var v3=document.getElementById('div3');
+           }
+           .horsingride img{
+           	 margin:0;
+               padding:0;
+               float:left;
+               height:100px;
+               width:300px;
+           }
+           #div1{
+               width:1000px;
+               height:100px;
+               overflow: hidden;
+               border:solid blue 2px;
+           }
+           #div2,#div3{
+               float:left;
+           }
+           #div4{
+               width:500%;/*这个属性很重要 让容器有足够的宽度实现滚动*/
+               float:left;
+           }
+        </style>
+        <script type="text/javascript">
+            window.onload=function(){
+            var v1=document.getElementById('div1');
+            var v2=document.getElementById('div2');
+            var v3=document.getElementById('div3');
 
-          v3.innerHTML= v2.innerHTML;//将v2容器里面的图片插入到v3容器里面  使其空白区域被遮住。
-          function fun(){
-            if(v1.scrollLeft<=0){
-                v1.scrollLeft=600;
-            }else{
-                v1.scrollLeft--;
+            v3.innerHTML= v2.innerHTML;//将v2容器里面的图片插入到v3容器里面  使其空白区域被遮住。
+            function fun(){
+              if(v1.scrollLeft<=0){
+                  v1.scrollLeft=600;
+              }else{
+                  v1.scrollLeft--;
+              }
+            }
+
+            var fun1=setInterval(fun,10);
+
+            v1.onmouseover = function() {//鼠标经过时  清除定时器  停止图片的滚动
+                    clearInterval(fun1)
+                };
+            v1.onmouseout = function() {//鼠标离开后  继续滚动图片
+                    fun1 = setInterval(fun, 10)
+                };
+            }
+
+        </script>
+
+        <!--欢迎界面-->
+        <script>
+        function setCookie(cname,cvalue,exdays){
+            var d = new Date();
+            d.setTime(d.getTime()+(exdays*60*1000));
+            var expires = "expires="+d.toGMTString();
+            document.cookie = cname+"="+cvalue+"; "+expires;
+        }
+        function getCookie(cname){
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0; i<ca.length; i++) {
+                var c = ca[i].trim();
+                if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+            }
+            return "";
+        }
+        function checkCookie(){
+            var user=getCookie("username");
+            if (user!=""){
+                alert("欢迎 " + user + " 再次访问");
+            }
+            else {
+                user = prompt("请输入你的名字:","");
+                if (user!="" && user!=null){
+                    setCookie("username",user,1);
+                }
             }
         }
-
-        var fun1=setInterval(fun,10);
-
-        v1.onmouseover = function() {//鼠标经过时  清除定时器  停止图片的滚动
-                clearInterval(fun1)
-            };
-        v1.onmouseout = function() {//鼠标离开后  继续滚动图片
-                fun1 = setInterval(fun, 10)
-            };
-     }
-
-    </script>
-
+        </script> 
 
     </head>
-    <body>
+    <body >
         <!-- 下面是内容部分 -->
         <div class="header">
             <h1 class="center"><i class="iconfont">&#xe664;</i> IT书城</h1>
@@ -171,141 +158,154 @@
             </div>         
 
         <div class="topnav">
-            <a  class="active" href="#">首页</a>
-            <a href="./code/table.html">书库</a>
-            <a href="#">社区</a>
-            <a href="./code/biaodan.html" style="float:right" >登录</a>
+            
+       <!--动态生成-->
+        <div id="header">
+        </div>
 
-         <form class="search" name="formTest" action="./code/save.php" method="post"  enctype="application/x-www-form-urlencoded" >
+        <script>  
+        load_tpl();
+        function load_tpl(){        
+          $.get("tpl/head.tpl", function(result){      
+           $("#header").html(result);});   
+           }       
+        </script>
+
+
+        <form class="search" name="formTest" action="./code/save.php" method="post"  enctype="application/x-www-form-urlencoded" >
             <input type="text" name="书籍名称"  value="WEB前端"/>
             <input type="submit" value="搜索"/>    
         </form> 
 
         </div>
 
-    <!--  跑马灯特效-->
-    <div id="div1" class="horsingride">
-         <div id="div4">
-              <div id="div2">
-                  <img src="./photos/discount1.jpg" alt="图片1"/>
-                  <img src="./photos/discount2.jpg" alt="图片2"/>
-                  <img src="./photos/discount3.jpg" alt="图片3"/>
-                  <img src="./photos/discount4.jpg" alt="图片4"/>
+        <!--  跑马灯特效-->
+        <div id="div1" class="horsingride">
+             <div id="div4">
+                  <div id="div2">
+                      <img src="./photos/discount1.jpg" alt="图片1"/>
+                      <img src="./photos/discount2.jpg" alt="图片2"/>
+                      <img src="./photos/discount3.jpg" alt="图片3"/>
+                      <img src="./photos/discount4.jpg" alt="图片4"/>
+                 </div>
+                 <div id="div3"></div><!--这个容器是用来防止图片滚动时会出现空白的区域-->
              </div>
-             <div id="div3"></div><!--这个容器是用来防止图片滚动时会出现空白的区域-->
-         </div>
-    </div>
-
-    <!--page 页面-->
-    <div class="page">
-        <div class="leftcolumn" id="information" >
-
-
-        <div class="card">
-        <h2>本网站创始人基本信息</h2>
-        <ul>
-        <li>姓名： 韩宁   </li>
-        <li>性别：男</li>
-        <li>学校：杭州电子科技大学</li>
-        </ul>
-            <figure>
-                <img border="0" src="https://www.runoob.com/images/pulpit.jpg" alt="Pulpit rock" width="304" height="215"
-                >
-            </figure>
-
-        <article>
-            <header>
-                <h3>自我介绍</h3>
-                <p><time pubdate datetime="2021-03-20"></time></p>
-            </header>
-            <p> 我叫韩宁，学号20051911，目前在学习Web前端开发技术。</p>
-        </article>
         </div>
 
+        <!--page 页面-->
+        <div class="page">
+            <div class="leftcolumn" id="information" >
 
-        <div class="card">
-            <h2>大神竟对这本书赞不绝口</h2>
-            <h5>2021 年 4 月 1日</h5>
-            <div  >
-                <img src="./photos/cDesignLanguage.jpg" alt="图片文本描述" width="651" height="290">
-                </div>           
-            <p>从很早开始，最吸引Torvalds的编程书籍是Brian W. Kernighan和Dennis M. Ritchie的《C程序设计语言》，本书在编程圈子里也被称为K＆R。因为它很简短，内容清晰简洁，但你需要有编程背景才能真正读懂它。而且并不是只有Torvalds推荐K＆R，其他人也都把这本书作为最有影响力的参考书籍之一，诸如甲骨文负责Linux和虚拟化开发的高级副总裁Wim Coekaerts；著名Linux内核开发者Alan Cox；谷歌云CTO Brian Stevens；以及Canonical公司技术运营副总裁Pete Graner 。</p>
-        </div>
-        <div class="card">
-            <h2>一本能让你月薪过万的书籍</h2>
-            <h5>2021 年 4 月 2日</h5>
-            <div  >
-                <img src="./photos/TCPdetails.jpg" alt="图片文本描述" width="651" height="290">
-                </div>           
-            <p>特别是W·Richard Stevens 的<b>《TCP/IP详解 卷1：协议》</b>这是是一本完整而详细的TCP/IP协议指南，到了如今依然十分受欢迎，即使它已经出版近30年了。由于Linux开发在很大程度上与网络基础设施相关，因此Graner还推荐了<b>《sendmail》，《学习bash》，《DNS与BIND》和《Managing IMAP》</b>等 O'Reilly书籍。<b>设计永不过时。</b>谷歌云CTO Brian Stevens认为：技术是比较固定的，但设计却不一样，他认为所有的开发人员都应该在学习语法之前就开始学习设计。</p>
-        </div>
 
-        </div>
-
-        <div class="rightcolumn">          
             <div class="card">
-                <h2>关于我</h2>                
-                  <p><b>我的email:</b>2512183698@qq.com</p>
-                 <p>可咨询我的详细信息</p>
+            <h2>本网站创始人基本信息</h2>
+            <ul>
+            <li>姓名： 韩宁   </li>
+            <li>性别：男</li>
+            <li>学校：杭州电子科技大学</li>
+            </ul>
+                <figure>
+                    <img border="0" src="https://www.runoob.com/images/pulpit.jpg" alt="Pulpit rock" width="304" height="215"
+                    >
+                </figure>
+
+            <article>
+                <header>
+                    <h3>自我介绍</h3>
+                    <p><time pubdate datetime="2021-03-20"></time></p>
+                </header>
+                <p> 我叫韩宁，学号20051911，目前在学习Web前端开发技术。</p>
+            </article>
+            </div>
+
+
+            <div class="card">
+                <h2>大神竟对这本书赞不绝口</h2>
+                <h5>2021 年 4 月 1日</h5>
+                <div  >
+                    <img src="./photos/cDesignLanguage.jpg" alt="图片文本描述" width="651" height="290">
+                    </div>           
+                <p>从很早开始，最吸引Torvalds的编程书籍是Brian W. Kernighan和Dennis M. Ritchie的《C程序设计语言》，本书在编程圈子里也被称为K＆R。因为它很简短，内容清晰简洁，但你需要有编程背景才能真正读懂它。而且并不是只有Torvalds推荐K＆R，其他人也都把这本书作为最有影响力的参考书籍之一，诸如甲骨文负责Linux和虚拟化开发的高级副总裁Wim Coekaerts；著名Linux内核开发者Alan Cox；谷歌云CTO Brian Stevens；以及Canonical公司技术运营副总裁Pete Graner 。</p>
             </div>
             <div class="card">
-                 <h2>热门书籍</h2>                
-                <div class="responsive">
-                <div class="img">
-                    <a target="_blank" href="./photos/图片1.jpg">
-                    <img src="./photos/图片1.jpg" alt="图片文本描述" width="215" height="304">
-                    </a>
-                <div class="desc">
-                    <a href="./code/details.html">深入理解JAVA虚拟机</a> </div>
-                </div>
-                </div>
+                <h2>一本能让你月薪过万的书籍</h2>
+                <h5>2021 年 4 月 2日</h5>
+                <div  >
+                    <img src="./photos/TCPdetails.jpg" alt="图片文本描述" width="651" height="290">
+                    </div>           
+                <p>特别是W·Richard Stevens 的<b>《TCP/IP详解 卷1：协议》</b>这是是一本完整而详细的TCP/IP协议指南，到了如今依然十分受欢迎，即使它已经出版近30年了。由于Linux开发在很大程度上与网络基础设施相关，因此Graner还推荐了<b>《sendmail》，《学习bash》，《DNS与BIND》和《Managing IMAP》</b>等 O'Reilly书籍。<b>设计永不过时。</b>谷歌云CTO Brian Stevens认为：技术是比较固定的，但设计却不一样，他认为所有的开发人员都应该在学习语法之前就开始学习设计。</p>
+            </div>
 
-                <div class="responsive">
-                <div class="img">
-                    <a target="_blank" href="./photos/图片1.png">
-                    <img src="./photos/图片1.png" alt="图片文本描述" width="215" height="304">
-                    </a>
-                <div class="desc">
-                    <a href="#">链接</a> </div>
-                </div>
-                </div>
+            </div>
 
-                <div class="responsive">
-                <div class="img">
-                    <a target="_blank" href="./photos/图片2.png">
-                    <img src="./photos/图片2.png" alt="图片文本描述" width="215" height="304">
-                    </a>
-                <div class="desc">
-                    <a href="#">链接</a> </div>
+            <div class="rightcolumn">          
+                <div class="card">
+                    <h2>关于我</h2>                
+                      <p><b>我的email:</b>2512183698@qq.com</p>
+                     <p>可咨询我的详细信息</p>
                 </div>
-                </div>
+                <div class="card">
+                     <h2>热门书籍</h2>                
+                    <div class="responsive">
+                    <div class="img">
+                        <a target="_blank" href="./photos/图片1.jpg">
+                        <img src="./photos/图片1.jpg" alt="图片文本描述" width="215" height="304">
+                        </a>
+                    <div class="desc">
+                        <a href="./code/javaDeep.html">深入理解JAVA虚拟机</a> </div>
+                    </div>
+                    </div>
 
-                <div class="responsive">
-                <div class="img">
-                    <a target="_blank" href="./photos/图片3.jpg">
-                    <img src="./photos/图片3.jpg" alt="图片文本描述" width="215" height="304">
-                    </a>
-                <div class="desc">
-                    <a href="#">链接</a> </div>
-                </div>
-                </div>
-                <a href="./code/table.html"> <h2>-->更多</h2> </a>
+                    <div class="responsive">
+                    <div class="img">
+                        <a target="_blank" href="./photos/图片1.png">
+                        <img src="./photos/图片1.png" alt="图片文本描述" width="215" height="304">
+                        </a>
+                    <div class="desc">
+                        <a href="#">链接</a> </div>
+                    </div>
+                    </div>
 
-                 
+                    <div class="responsive">
+                    <div class="img">
+                        <a target="_blank" href="./photos/图片2.png">
+                        <img src="./photos/图片2.png" alt="图片文本描述" width="215" height="304">
+                        </a>
+                    <div class="desc">
+                        <a href="#">链接</a> </div>
+                    </div>
+                    </div>
+
+                    <div class="responsive">
+                    <div class="img">
+                        <a target="_blank" href="./photos/图片3.jpg">
+                        <img src="./photos/图片3.jpg" alt="图片文本描述" width="215" height="304">
+                        </a>
+                    <div class="desc">
+                        <a href="#">链接</a> </div>
+                    </div>
+                    </div>
+                    <a href="./code/table.html"> <h2>-->更多</h2> </a>
+
+                     
+                </div>
+            </div>
+
+            <div id="page">                 
+                <img src="https://www.runoob.com/wp-content/uploads/2016/04/trolltunga.jpg" width="152"
+                 height="107" >         
             </div>
         </div>
 
-        <div id="page">                 
-            <img src="https://www.runoob.com/wp-content/uploads/2016/04/trolltunga.jpg" width="152"
-             height="107" >         
+        <div class="footer" id="footer">
+            
         </div>
-    </div>
-
-    <div class="footer">
-        <p>底部区域</p>
-    </div>
-    <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
-	<script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="js/bootsnav.js"/></script>
+        <script>
+        $.get("tpl/footer.tpl", function(result){      
+               $("#footer").html(result);});   
+               
+        </script>
+	
+	
     </body>
 </html>

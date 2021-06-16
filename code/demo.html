@@ -1,65 +1,55 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8"></meta>
-        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-    </head>
-    <body>
-        <div class="info" style='color:red'></div>
-        <table>
-            <thead>
-                <tr>
-                    <th>栏目一</th>
-                    <th>栏目二</th>
-                    <th>栏目三</th>
-                    <th>操作</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-        <a href="#" id="add" onclick="AddRow();">增加一行</a>
-    </body>
-</html>
-
-<script type="text/javascript">
-    var row_last_num = 0;
-
-    function AddRow(){
-        row_last_num += 1;
-        $("tbody").append("<tr id='tr" + row_last_num + "'>" +
-                            "<td onclick='ChangeCell(this);'>栏目一数据1</td>" +
-                            "<td onclick='ChangeCell(this);'>栏目二数据2</td>" +
-                            "<td onclick='ChangeCell(this);'>栏目三数据3</td>" +
-                            "<td><a href='#' class='remove' onclick='RemoveRow(this);'>删除</a></td></tr>");
-    }
-
-    function RemoveRow(o){
-        $(o).parent().parent().remove();
-    }
-
-    //改变标签类型为<input>
-    function ChangeCell(o){
-        $(o).replaceWith("<input type='text' class='current' onblur='UpdateCell(event);'>");
-        $("input.current").focus();
-    }
-
-    //修改标签类型为<td>并且将input中的值赋给该标签的text
-    //todo: 当键盘输入回车时，完成当前输入
-    function UpdateCell(event){
-        var o = event.target;
-        var elem = $(o);
-        var temp = elem.val();
-        var info = '';
-        if(temp && temp != "" ){
-            elem.replaceWith("<td onclick='ChangeCell(this);'>" + temp + "</td>");
-        }else{
-            //alert("字段不得为空！");
-            //event.preventDefault();
-            //event.stopPropagation
-            elem.focus();
-            info = '字段不得为空！';
+<head>
+    <meta charset="utf-8" />
+	<title>IT书城</title>
+	<link rel="stylesheet" type="text/css" href="/css/details.css">
+	<style>
+        .page{ 
+            display: none; 
+        /* 其他样式省略 */
         }
-        $('.info').text(info);
+        .page.cur{ 
+            display: block;
+        }
+        /* 其他样式省略 */
+    </style>
+</head>
+<body>
+    <article class="container">
+    <section id="page1" class="page cur">当前第一页</section>
+    <section id="page2" class="page">当前第二页</section>
+    <section id="page3" class="page">当前第三页</section>
+    </article>
+    <nav id="nav" class="bottom-nav">
+        <ul>
+            <li>第一页</li>
+            <li>第二页</li>
+            <li>第三页</li>
+        </ul>
+    </nav>
+    <script>
+    window.onload = function () {
+        var nav = document.getElementById('nav');
+        var navLi = nav.getElementsByTagName('li');
+        for(var i = 0,len = navLi.length; i < len; i++){
+            (function (i) { 
+                navLi[i].onclick = function () {   //点击nav中的li，改变hash值
+                    location.hash = 'page' + (i+1);
+                }
+            })(i);
+        }
+        location.hash = 'page1';   //每次页面重新加载时都回到page1
+        window.onhashchange = function (e) {   
+            //当hash变化时，执行hashchange事件，该事件具有oldURL和newURL两个事件属性，分别代表前一个URL和目前的URL
+            var oldHash = e.oldURL.split('#')[1];   //取得前一个hash
+            var newHash = e.newURL.split('#')[1];   //取得当前hash
+            var oldPage = document.getElementById(oldHash);
+            var newPage = document.getElementById(newHash);
+            oldPage.classList.remove('cur');    //隐藏前一个page
+            newPage.classList.add('cur');     //显示当前page
+        };
     }
-
-</script>
+</script> 
+</body>
+</html>
